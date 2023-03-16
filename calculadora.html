@@ -6,8 +6,24 @@
     <title>Calculadora - React Profissional</title>
 </head>
 <body>
+    <div id="root"></div>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script text="text/babel">
+        ReactDOM.render(
+            <div>
+                <div className="header">Calculadora</div>
+                <div className="calculator">
+                    <div className="display"></div>
+                    <div className="keyboard">
+                            
+                    </div>
+                </div>
+            </div>
+            ,
+            document.getElementById("root")
+        )
+    </script>
 </body>
 </html>
