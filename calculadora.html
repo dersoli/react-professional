@@ -10,20 +10,28 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script text="text/babel">
+    <script type="text/babel">
         ReactDOM.render(
             <div>
                 <div className="header">Calculadora</div>
                 <div className="calculator">
                     <div className="display"></div>
                     <div className="keyboard">
-                            
+                        <button>7</button>
+                        <button>8</button>
+                        <button>9</button>
+                        <button>4</button>
+                        <button>5</button>
+                        <button>6</button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>0</button>
                     </div>
                 </div>
-            </div>
-            ,
+            </div>,
             document.getElementById("root")
-        )
+        );
     </script>
 </body>
 </html>
