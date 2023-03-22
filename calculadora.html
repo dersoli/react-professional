@@ -67,6 +67,8 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
+        const calcRegex = /^([0-9]|-|\+|\*|\/|\.)*$/;
+
         const Header = () =>
             <div className="header">Calculadora</div>;
 
@@ -119,7 +121,10 @@
                         className="display"
                         value={display}
                         onChange={(event) => {
-                            setDisplay(event.target.value)
+                            const {value} = event.target
+                            if(calcRegex.test(value)){
+                                setDisplay(event.target.value)
+                            }
                         }}
                     />
                     <div className="keyboard">
