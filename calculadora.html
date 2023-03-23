@@ -58,6 +58,9 @@
             background: #ffeec2;
             color: #c49023;
         }
+        .error{
+            color: red;
+        }
     </style>
     <title>Calculadora - React Profissional</title>
 </head>
@@ -86,6 +89,8 @@
         const Calculator = () => {
             const [display, setDisplay] = React.useState("");
 
+            const [error, setError] = React.useState();
+
             const keyboard = [
                 7,8,9, "/", "C",
                 4,5,6, "*", "Del",
@@ -94,7 +99,11 @@
             ]
 
             const doTheMath = () => {
-                setDisplay("" + eval(display));
+                try{
+                    setDisplay("" + eval(display));
+                } catch (err) {
+                    setError(`Invalid expression: ${err.message}` );
+                }
             }
 
             const handleClick = (value) => {
@@ -138,6 +147,9 @@
                             }
                         }}
                     />
+                    {error && (
+                        <p className="error">{error}</p>
+                    )}
                     <div className="keyboard">
                         {keyboard.map(value => {
                             const span2Class = value === 0 ? 'span2' : '';
