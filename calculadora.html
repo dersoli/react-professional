@@ -102,6 +102,8 @@
             const [error, setError] = React.useState();
 
             const [showAd, toggleAd] = React.useState(false);
+
+            const [history, setHistory] = React.useState([])
             
             React.useEffect(() => {
                 if(error){
@@ -111,6 +113,7 @@
 
             const doTheMath = () => {
                 try{
+                    setHistory([].concat(history, display))
                     setDisplay("" + eval(display));
                 } catch (err) {
                     setError(`Invalid expression: ${err.message}` );
