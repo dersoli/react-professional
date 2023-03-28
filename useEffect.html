@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Teste 2 - React Profissional</title>
+        <title>Teste 3 - React Profissional</title>
     </head>
     <body>
         <div id="root"></div>
@@ -10,30 +10,43 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.production.min.js" integrity="sha256-Ef0vObdWpkMAnxp39TYSLVS/vVUokDE8CDFnx7tjY6U=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.production.min.js" integrity="sha256-zuSDvIPhgPCvDFw3HdbA58QUOOGxPbs4llUvBOPxvjY=" crossorigin="anonymous"></script>
         <script type="text/babel">
-            const Counter = ({value}) => (
-                <p>Contador: {value}</p>
-            )
 
-            
-        
+            const setDocumentTitle = newTitle => {
+                document.title = newTitle;
+            };
+
             const App = () => {
-                const [counter, setCounter] = React.useState(0);
+                const [title, setTitle] = React.useState("");
+                setDocumentTitle("React Profissional");
 
+                React.useEffect(() => {
+                    if(title){
+                        setDocumentTitle(title);
+                    } else {
+                        setDocumentTitle("React Profissional");
+                    }
+                }, [title])
+                
                 return (
                     <div>
-                        <Counter value={counter} />
+                        <input 
+                            type="text"
+                            value={title}
+                            onChange={event => {
+                                setTitle(event.target.value);
+                            }}
+                        />
                         <button
-                            type="button"
                             onClick={() => {
-                                setCounter(counter + 1)
+                                setTitle("")
                             }}
                         >
-                            Somar 1
+                            Limpar
                         </button>
                     </div>
                 );
             };
-        
+
             ReactDOM.render(
                 <App />,
                 document.getElementById("root"));
