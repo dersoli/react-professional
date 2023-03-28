@@ -199,8 +199,10 @@
                 <div className="calculator">
                     {showHist && (
                         <div className="history">
-                            {history.map(({calculation, result}) => (
-                                <p>{`${calculation} = ${result}`}</p>
+                            {history.map(({calculation, result}, index) => (
+                                <p key={index}>
+                                    {`${calculation} = ${result}`}
+                                </p>
                             ))}
                         </div>
                     )}
