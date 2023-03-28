@@ -89,7 +89,7 @@
         ]
 
         const advancedKeys = [
-            "(", ")", "Hist"
+            "(", ")", "Hist", "", "AC"
         ]
 
         const Header = () => <div className="header">Calculadora</div>;
@@ -159,6 +159,7 @@
                     case "Hist":
                         toggleHist(!showHist)
                         break;
+                        
                     default:
                         setDisplay(`${display}${value}`)
                 }
