@@ -89,7 +89,7 @@
         ]
 
         const advancedKeys = [
-            "(", ")", "Hist", "", "AC"
+            "(", ")", "Hist", "Up", "AC"
         ]
 
         const Header = () => <div className="header">Calculadora</div>;
@@ -164,6 +164,18 @@
                         setDisplay("")
                         setHistory([])
                         break;
+
+                    case "Up":
+                        const lastIndex = history.length - 1;
+                        if (lastIndex > -1){
+                            const newDisplay = history[lastIndex].calculation;
+                            const newHistory = history.slice(0, lastIndex)
+                            setDisplay(newDisplay);
+                            setHistory(newHistory);
+                        }
+                        
+                        break;
+                
                     default:
                         setDisplay(`${display}${value}`)
                 }
