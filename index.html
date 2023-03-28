@@ -18,15 +18,16 @@
         
             const App = () => {
                 const [counter, setCounter] = React.useState(0);
-                
-                const addCount = () => {
-                    setCounter + 1
-                }
 
                 return (
                     <div>
                         <Counter value={counter} />
-                        <button type="button" onClick={addCount}>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setCounter(counter + 1)
+                            }}
+                        >
                             Somar 1
                         </button>
                     </div>
