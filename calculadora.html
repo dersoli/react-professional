@@ -80,7 +80,7 @@
         ]
 
         const advancedKeys = [
-            "(", ")"
+            "(", ")", "Hist"
         ]
 
         const Header = () => <div className="header">Calculadora</div>;
@@ -101,9 +101,11 @@
 
             const [error, setError] = React.useState();
 
-            const [showAd, toggleAd] = React.useState(false);
+            const [showAd, toggleAd] = React.useState(true);
 
             const [history, setHistory] = React.useState([])
+
+            const [showHist, toggleHist] = React.useState(true)
             
             React.useEffect(() => {
                 if(error){
@@ -113,8 +115,12 @@
 
             const doTheMath = () => {
                 try{
-                    setHistory([].concat(history, display))
-                    setDisplay("" + eval(display));
+                    const result = + eval(display);
+                    setHistory([].concat(history, {
+                        calculation: display,
+                        result
+                    }))
+                    setDisplay(`${result}`);
                 } catch (err) {
                     setError(`Invalid expression: ${err.message}` );
                 }
@@ -161,6 +167,13 @@
 
             return(
                 <div className="calculator">
+                    {showHist && (
+                        <div className="history">
+                            {history.map(({calculation, result}) => (
+                                <p>{`${calculation} = ${result}`}</p>
+                            ))}
+                        </div>
+                    )}
                     <input 
                         type="text"
                         className="display"
